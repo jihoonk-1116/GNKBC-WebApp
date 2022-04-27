@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<body>
+<!-- Spinner Start -->
+<div th:fragment="spinner" id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<!-- Spinner End -->
+<!-- Topbar Start -->
+<div th:fragment="topbar" class="container-fluid bg-light p-0">
+    <div class="row gx-0 d-none d-lg-flex">
+        <div class="col-lg-7 px-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                <small>123 Street, New York, USA</small>
+            </div>
+        </div>
+        <div class="col-lg-5 px-5 text-end">
+            <div class="h-100 d-inline-flex align-items-center">
+                <a class="btn btn-sm-square text-primary me-1" href=""><small>Admin</small></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<div>
+    <nav th:fragment="nav" class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary">뉴욕 은혜 침례교회</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="/" class="nav-item nav-link active">홈</a>
+                <a href="/intro" class="nav-item nav-link">우리교회는</a>
+                <a href="/videoWorship" class="nav-item nav-link">영상 예배</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">게시판</a>
+                    <div class="dropdown-menu fade-up m-0">
+                        <a th:href="@{/bulletins/noticePage}" class="dropdown-item">공지사항</a>
+                        <a href="/bulletins/newsPage" class="dropdown-item">교회소식</a>
+                        <a href="/bulletins/activityPage" class="dropdown-item">교회활동</a>
+                    </div>
+                </div>
+                <a href="/contactus" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

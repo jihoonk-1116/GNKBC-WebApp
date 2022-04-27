@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.GNKBC.GNKBC.repository.StaticAssetsRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-27T18:09:53" hostname="Chihoons-MBP.lan" time="0.081">
+  <properties/>
+  <testcase name="loadFromJson()" classname="com.GNKBC.GNKBC.repository.StaticAssetsRepositoryTest" time="0.081"/>
+  <system-out><![CDATA[StaticString(tag=key2, content=test2)
+StaticString(tag=key, content=test1)
+[StaticString(tag=key2, content=test2), StaticString(tag=key, content=test1)]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

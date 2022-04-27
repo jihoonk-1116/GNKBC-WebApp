@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>GNKBC 뉴욕 그레이스 한인침례교회</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="뉴욕, 침례교회, 뉴욕 그레이스 교회, 은혜교회" name="keywords">
+    <meta content="한인교회" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<script th:inline="javascript">
+    console.log([[${stringData.tag}]]);
+    console.log([[${stringData.content}]]);
+</script>
+
+<body>
+<!-- Spinner Start -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<!-- Spinner End -->
+
+
+<!--topbar & nav-->
+<div th:replace="~{basicpage/fragments/top-nav :: topbar}"></div>
+<div th:replace="~{basicpage/fragments/top-nav :: nav}"></div>
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 pb-5">
+    <div class="owl-carousel header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8 text-center">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">은혜교회</h5>
+                            <h1 class="display-3 text-white animated slideInDown mb-4">뉴욕한인 침례 교회</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">사진 설명</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8 text-center">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">사진2</h5>
+                            <h1 class="display-3 text-white animated slideInDown mb-4">사진2 부제목</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">사진2 설명</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8 text-center">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">사진3</h5>
+                            <h1 class="display-3 text-white animated slideInDown mb-4">사진3 부제목</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">사진3 설명</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Feature Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                        <i class="fa fa-user-check fa-2x text-primary"></i>
+                    </div>
+                    <h1 class="display-1 text-light mb-0">01</h1>
+                </div>
+                <h5>교회 소개문장</h5>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                        <i class="fa fa-check fa-2x text-primary"></i>
+                    </div>
+                    <h1 class="display-1 text-light mb-0">02</h1>
+                </div>
+                <h5>교회 소개문장</h5>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                        <i class="fa fa-drafting-compass fa-2x text-primary"></i>
+                    </div>
+                    <h1 class="display-1 text-light mb-0">03</h1>
+                </div>
+                <h5>교회 소개문장</h5>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                        <i class="fa fa-headphones fa-2x text-primary"></i>
+                    </div>
+                    <h1 class="display-1 text-light mb-0">04</h1>
+                </div>
+                <h5>교회 소개문장</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature Start -->
+
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            <h1 class="display-5 mb-5">교회 활동</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/service-1.jpg" alt="">
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">활동1</h4>
+                        <p>내용</p>
+                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/service-2.jpg" alt="">
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">활동</h4>
+                        <p>내용</p>
+                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/service-3.jpg" alt="">
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">활동</h4>
+                        <p>내용</p>
+                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/service-4.jpg" alt="">
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">활동</h4>
+                        <p>내용</p>
+                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/service-5.jpg" alt="">
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">활동</h4>
+                        <p>내용</p>
+                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src="img/service-6.jpg" alt="">
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">활동</h4>
+                        <p>내용</p>
+                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+
+<!-- Footer Start -->
+<div th:replace="~{basicpage/fragments/footer :: footer}"></div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+</body>
+
+</html>
