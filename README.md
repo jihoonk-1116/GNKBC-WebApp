@@ -42,3 +42,7 @@
    - Keep MVC & OOP pattern for maintenance and prevent entire system faliure caused by a single point of faliure
    - Stricted follow : Controller - Service - Repository pattern
    - Depend on Interface class, not its implementation
+  ## Detail
+   - @Qualifier
+   - @PostConstruct , @PreDestroy
+   - GSON
