@@ -1,6 +1,9 @@
 # GNKBC-WebApp Development Log
   Full-Stack development for launching Grace New York Church's Offical Web application.
   
+  Static Web page, Admin service, Bulletin service in Java Spring
+  User auth, contact us in AWS Lambda 
+  
 # Stack
   ## Frontend
    * Thymeleaf - SSR with Spring framework
