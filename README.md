@@ -35,7 +35,7 @@
    - JSON storage for storing static string data in order to keep and reflect static data modification without Relational Data Base
    - Gson to manage the JSON storage
    - Postman to test admin service's functionality
-   - Thymeleaf and inline JavaScript to deliver a changed string data from JSON storage
+   - Thymeleaf and inline JavaScript to deliver a changed string data to front view from the JSON storage
    - Keep MVC & OOP pattern for maintenance and prevent entire system faliure caused by a single point of faliure
    - Stricted follow : Controller - Service - Repository pattern
    - Depend on Interface class, not its implementation
