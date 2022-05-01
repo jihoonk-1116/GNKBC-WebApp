@@ -1,6 +1,17 @@
 # GNKBC-WebApp Development Log
   Full-Stack development for launching Grace New York Church's Offical Web application.
   
+  * Static Web page, Admin service, Bulletin service in Java Spring <br>
+  * User auth, contact us in AWS Lambda 
+  
+# Requirements 
+  - Cost efficient
+  - Web App that is able to easily update church's information without a developer
+  - Responsive Web App
+  - User Management
+  - Design Java class following MVC (Model,View,Controller) pattern and OOP rules
+  
+
 # Stack
   ## Frontend
    * Thymeleaf - SSR with Spring framework
@@ -17,25 +28,24 @@
    * Junit
    * Gson
    * Gradle
-
-# TODO List
- * Select Frontend template that is using Bootstrap, Jquery
- * Integration with Thymeleaf in order to utilize server side rendering using Spring framework
- * Design Java class following MVC (Model,View,Controller) pattern and OOP rules
- * Build Json data storage to manage static string data(ex.. church introduction) using Gson 
- * Develop admin service to change web site's information without a professional developer
+   
 
 # Step 1: Static web page 
   ## TODO & Completion
-   - Integration with Thymeleaf in order to use the pre-built template with Spring
+   - Select Frontend template that is using Bootstrap, Jquery
+   - Integration with Thymeleaf in order to use the pre-built template with Spring framework
    - Communication with the design team in GNKBC to optimize and improve website's view
 # Step 2: Basic Admin page
   ## TODO & Completion
    - Admin service for someone who is not developer
-   - JSON storage for storing static string data in order to keep and reflect static data modification without Relational Data Base
-   - Gson to manage the JSON storage
+   - JSON storage for storing static string data in order to keep static data and reflect data modification without a Relational Data Base
+   - GSON libary to manage the JSON storage
    - Postman to test admin service's functionality
-   - Thymeleaf and inline JavaScript to deliver a changed string data from JSON storage
+   - Thymeleaf and JavaScript to deliver a changed string data to front view from the Static data repository
    - Keep MVC & OOP pattern for maintenance and prevent entire system faliure caused by a single point of faliure
-   - Stricted follow : Controller - Service - Repository pattern
+   - Stricted follow the dependent flow: Controller - Service - Repository 
    - Depend on Interface class, not its implementation
+  ## Development Note
+   - @Qualifier
+   - @PostConstruct , @PreDestroy
+   - GSON
