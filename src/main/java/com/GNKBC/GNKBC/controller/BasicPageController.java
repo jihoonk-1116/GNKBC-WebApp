@@ -1,33 +1,27 @@
 package com.GNKBC.GNKBC.controller;
 
 
-import com.GNKBC.GNKBC.domain.StaticString;
-import com.GNKBC.GNKBC.repository.BasicRespository;
-import com.GNKBC.GNKBC.repository.StaticAssetsRepository;
-import com.GNKBC.GNKBC.service.AdminService;
+import com.GNKBC.GNKBC.service.BasicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.io.FileNotFoundException;
 
 @Slf4j
 @Controller
 @RequestMapping("/")
 public class BasicPageController {
 
-    @Autowired @Qualifier("StaticAssetsRepository")
-    private BasicRespository basicRespository;
+    @Autowired
+    BasicService basicService;
 
     @GetMapping
     public String home(Model model){
-        StaticString staticString = basicRespository.getContent("key3");
-        log.info(staticString.toString());
-        model.addAttribute("stringData", staticString);
+
+        model = basicService.loadStaticString(model);
+
         return "/basicpage/index";
     }
 

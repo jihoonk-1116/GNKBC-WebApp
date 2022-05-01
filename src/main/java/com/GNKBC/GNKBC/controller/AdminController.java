@@ -35,7 +35,7 @@ public class AdminController {
         /**
          * TODO take key(ex..introduction, header) and string data from user
          */
-        adminService.stringDataUpdate("key3", "I got a coffee !! So good~~");
+        adminService.stringDataUpdate("key3", "but I have a good coffee");
         return "changeHeader";
     }
 

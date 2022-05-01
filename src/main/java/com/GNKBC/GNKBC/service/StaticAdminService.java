@@ -1,6 +1,6 @@
 package com.GNKBC.GNKBC.service;
 
-import com.GNKBC.GNKBC.repository.BasicRespository;
+import com.GNKBC.GNKBC.repository.StaticAssetsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +14,13 @@ import org.springframework.stereotype.Service;
 public class StaticAdminService implements AdminService{
 
     @Autowired @Qualifier("StaticAssetsRepository")
-    private final BasicRespository basicRespository;
+    private final StaticAssetsRepository staticAssetsRepository;
 
     @Override
     public void stringDataUpdate(String key, String userInput) {
 
         log.info("User request == " + userInput);
 
-        basicRespository.updateString(key, userInput);
-
+        staticAssetsRepository.updateString(key, userInput);
     }
 }

@@ -8,52 +8,38 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 @Slf4j
 @Repository
 @Qualifier("StaticAssetsRepository")
-public class StaticAssetsRepository implements BasicRespository {
+public class StaticAssetsRepository {
 
     private static final HashMap<String, StaticString> staticStringStore = new HashMap<>();
 
-
-    @Override
-    public void saveToJson(String key, StaticString staticObject) {
-        /**
-         * TODO - Write static string data in staticString.json as json data format
-         * use GSON
-         */
-        try {
-            Writer writer = new FileWriter("staticString.json");
-            Gson gs = getGson();
-            gs.toJson(staticStringStore.values(), writer);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public HashMap<String, StaticString> getContentMap(){
+        return staticStringStore;
     }
-
-    @Override
     public void updateString(String key, String userInput) {
         StaticString newStaticString = new StaticString(key,userInput);
         staticStringStore.put(key, newStaticString);
-        saveToJson(key, newStaticString);
     }
 
-
-    @Override
     @PostConstruct
-    public void loadFromJson() throws FileNotFoundException {
+    private void loadFromJson() throws FileNotFoundException {
 
         Gson gs = getGson();
         Reader reader = new FileReader("staticString.json");
 
         try{
+
             String jsonData = readFileAsString("staticString.json");
 
             JsonArray jsonArray = (JsonArray) JsonParser.parseString(jsonData);
@@ -71,14 +57,20 @@ public class StaticAssetsRepository implements BasicRespository {
         }
 
     }
-
-    @Override
-    public StaticString getContent(String key) {
-        return staticStringStore.get(key);
-    }
-
-    public Collection<StaticString> getAll(){
-        return staticStringStore.values();
+    @PreDestroy
+    private void saveToJson() {
+        /**
+         * TODO - Write static string data in staticString.json as json data format
+         * use GSON
+         */
+        try {
+            Writer writer = new FileWriter("staticString.json");
+            Gson gs = getGson();
+            gs.toJson(staticStringStore.values(), writer);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private Gson getGson() {

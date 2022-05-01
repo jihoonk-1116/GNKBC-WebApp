@@ -33,8 +33,8 @@
 </head>
 
 <script th:inline="javascript">
-    console.log([[${stringData.tag}]]);
-    console.log([[${stringData.content}]]);
+    console.log([[${stringMap['key3'].tag}]]);
+    console.log([[${stringMap['key3'].content}]]);
 </script>
 
 <body>

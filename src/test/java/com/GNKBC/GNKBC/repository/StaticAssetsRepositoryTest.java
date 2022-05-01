@@ -15,12 +15,4 @@ class StaticAssetsRepositoryTest {
 //        staticAssetsRepository.saveToJson("key","content");
 //
 //    }
-
-    @Test
-    void loadFromJson() throws FileNotFoundException {
-        StaticAssetsRepository staticAssetsRepository = new StaticAssetsRepository();
-
-        staticAssetsRepository.loadFromJson();
-        System.out.println(staticAssetsRepository.printAll().toString());
-    }
 }
