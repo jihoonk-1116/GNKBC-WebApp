@@ -44,8 +44,12 @@
    - Thymeleaf and JavaScript to deliver a changed string data to front view from the Static data repository
    - Keep MVC & OOP pattern for maintenance and prevent entire system faliure caused by a single point of faliure
    - Stricted follow the dependent flow: Controller - Service - Repository 
-   - Depend on Interface class, not its implementation
   ## Development Note
    - @Qualifier
    - @PostConstruct , @PreDestroy
    - GSON
+  ## Static String Data Management
+    - 
+  ## Static Image File Management
+  
+# Step 3: CRUD Bulletins 
