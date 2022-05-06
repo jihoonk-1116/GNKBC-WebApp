@@ -27,9 +27,10 @@ public class StaticAssetsRepository {
     public HashMap<String, StaticString> getContentMap(){
         return staticStringStore;
     }
+
     public void updateString(String key, String userInput) {
         StaticString newStaticString = new StaticString(key,userInput);
-        staticStringStore.put(key, newStaticString);
+        staticStringStore.put(newStaticString.getTag(), newStaticString);
     }
 
     @PostConstruct

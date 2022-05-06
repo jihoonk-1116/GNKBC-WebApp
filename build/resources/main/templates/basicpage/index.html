@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <title>GNKBC 뉴욕 그레이스 한인침례교회</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="뉴욕, 침례교회, 뉴욕 그레이스 교회, 은혜교회" name="keywords">
@@ -31,12 +34,9 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
-<script th:inline="javascript">
-    console.log([[${stringMap['key3'].tag}]]);
-    console.log([[${stringMap['key3'].content}]]);
+<script>
+    function reload() {window.location.reload(true);}
 </script>
-
 <body>
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -45,7 +45,8 @@
     </div>
 </div>
 <!-- Spinner End -->
-
+<button type="button" class="btn btn-secondary btn-sm w-100"
+       onclick="reload()" >수정하기</button>
 
 <!--topbar & nav-->
 <div th:replace="~{basicpage/fragments/top-nav :: topbar}"></div>
@@ -57,43 +58,16 @@
         <div class="owl-carousel-item position-relative">
             <img class="img-fluid" src="img/carousel-1.jpg" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-lg-8 text-center">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">은혜교회</h5>
-                            <h1 class="display-3 text-white animated slideInDown mb-4">뉴욕한인 침례 교회</h1>
-                            <p class="fs-5 fw-medium text-white mb-4 pb-2">사진 설명</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
             <img class="img-fluid" src="img/carousel-1.jpg" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-lg-8 text-center">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">사진2</h5>
-                            <h1 class="display-3 text-white animated slideInDown mb-4">사진2 부제목</h1>
-                            <p class="fs-5 fw-medium text-white mb-4 pb-2">사진2 설명</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
             <img class="img-fluid" src="img/carousel-1.jpg" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-lg-8 text-center">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">사진3</h5>
-                            <h1 class="display-3 text-white animated slideInDown mb-4">사진3 부제목</h1>
-                            <p class="fs-5 fw-medium text-white mb-4 pb-2">사진3 설명</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -109,36 +83,32 @@
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
                         <i class="fa fa-user-check fa-2x text-primary"></i>
                     </div>
-                    <h1 class="display-1 text-light mb-0">01</h1>
+                    <h1 class="display-6 text-primary mb-0" th:text="${stringMap['linktitle1'].content}">교회 소개</h1>
                 </div>
-                <h5>교회 소개문장</h5>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
                         <i class="fa fa-check fa-2x text-primary"></i>
                     </div>
-                    <h1 class="display-1 text-light mb-0">02</h1>
+                    <h1 class="display-6 text-primary mb-0" th:text="${stringMap['linktitle2'].content}" >오시는 길</h1>
                 </div>
-                <h5>교회 소개문장</h5>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
                         <i class="fa fa-drafting-compass fa-2x text-primary"></i>
                     </div>
-                    <h1 class="display-1 text-light mb-0">03</h1>
+                    <h1 class="display-6 text-primary mb-0" th:text="${stringMap['linktitle3'].content}">공지사항</h1>
                 </div>
-                <h5>교회 소개문장</h5>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
                         <i class="fa fa-headphones fa-2x text-primary"></i>
                     </div>
-                    <h1 class="display-1 text-light mb-0">04</h1>
+                    <h3 class="display-6 text-primary mb-0" th:text="${stringMap['linktitle4'].content}">교회 소개</h3>
                 </div>
-                <h5>교회 소개문장</h5>
             </div>
         </div>
     </div>
@@ -149,7 +119,7 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="section-title text-center">
-            <h1 class="display-5 mb-5">교회 활동</h1>
+            <h1 class="display-5 mb-5" th:text="${stringMap['activity-title'].content}">교회 활동</h1>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -158,9 +128,8 @@
                         <img class="img-fluid" src="img/service-1.jpg" alt="">
                     </div>
                     <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">활동1</h4>
-                        <p>내용</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                        <h4 class="mb-3" th:text="${stringMap['act1-title'].content}">활동1</h4>
+                        <p th:text="${stringMap['act1-desc'].content}">내용</p>
                     </div>
                 </div>
             </div>
@@ -170,9 +139,8 @@
                         <img class="img-fluid" src="img/service-2.jpg" alt="">
                     </div>
                     <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">활동</h4>
-                        <p>내용</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                        <h4 class="mb-3" th:text="${stringMap['act2-title'].content}">활동1</h4>
+                        <p th:text="${stringMap['act2-desc'].content}">내용</p>
                     </div>
                 </div>
             </div>
@@ -182,9 +150,8 @@
                         <img class="img-fluid" src="img/service-3.jpg" alt="">
                     </div>
                     <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">활동</h4>
-                        <p>내용</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                        <h4 class="mb-3" th:text="${stringMap['act3-title'].content}">활동1</h4>
+                        <p th:text="${stringMap['act3-desc'].content}">내용</p>
                     </div>
                 </div>
             </div>
@@ -194,9 +161,8 @@
                         <img class="img-fluid" src="img/service-4.jpg" alt="">
                     </div>
                     <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">활동</h4>
-                        <p>내용</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                        <h4 class="mb-3" th:text="${stringMap['act4-title'].content}">활동1</h4>
+                        <p th:text="${stringMap['act4-desc'].content}">내용</p>
                     </div>
                 </div>
             </div>
@@ -206,9 +172,8 @@
                         <img class="img-fluid" src="img/service-5.jpg" alt="">
                     </div>
                     <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">활동</h4>
-                        <p>내용</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                        <h4 class="mb-3" th:text="${stringMap['act5-title'].content}">활동</h4>
+                        <p th:text="${stringMap['act5-desc'].content}">내용</p>
                     </div>
                 </div>
             </div>
@@ -218,9 +183,8 @@
                         <img class="img-fluid" src="img/service-6.jpg" alt="">
                     </div>
                     <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">활동</h4>
-                        <p>내용</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                        <h4 class="mb-3" th:text="${stringMap['act6-title'].content}">활동1</h4>
+                        <p th:text="${stringMap['act6-desc'].content}">내용</p>
                     </div>
                 </div>
             </div>

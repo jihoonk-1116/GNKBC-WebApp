@@ -27,21 +27,42 @@ public class BasicPageController {
 
     @GetMapping("/intro")
     public String intro(Model model){
-        model.addAttribute("test", "intro Page");
+
+        model = basicService.loadStaticString(model);
         return "/basicpage/introPage";
     }
 
     @GetMapping("/contactus")
     public String contactus(Model model){
-        model.addAttribute("test", "message from controller!");
+        model = basicService.loadStaticString(model);
         return "/basicpage/contactusPage";
     }
 
     @GetMapping("/videoWorship")
     public String vWorship(Model model){
-        model.addAttribute("test", "message from controller!");
+        model = basicService.loadStaticString(model);
         return "/basicpage/videoWorship";
     }
+
+    @GetMapping("/pastorIntroPage")
+    public String pastorIntro(Model model){
+        model = basicService.loadStaticString(model);
+        return "/basicpage/pastorIntro";
+    }
+
+    @GetMapping("/historyPage")
+    public String historyPage(Model model){
+        model = basicService.loadStaticString(model);
+        return "/basicpage/history";
+    }
+
+    @GetMapping("/schedulePage")
+    public String schedulePage(Model model){
+        model = basicService.loadStaticString(model);
+        return "/basicpage/worshipSchedule";
+    }
+
+
 
 
 }

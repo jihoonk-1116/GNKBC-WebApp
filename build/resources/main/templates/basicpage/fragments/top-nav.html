@@ -30,7 +30,7 @@
 <div>
     <nav th:fragment="nav" class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary">뉴욕 은혜 침례교회</h2>
+            <h2 class="m-0 text-primary">뉴욕 그레이스 한인침례교회</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,15 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link active">홈</a>
-                <a href="/intro" class="nav-item nav-link">우리교회는</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">우리교회는</a>
+                    <div class="dropdown-menu fade-up m-0">
+                        <a href="/pastorIntroPage" class="dropdown-item">담임목사 인사말</a>
+                        <a href="/intro" class="dropdown-item">오시는 길</a>
+                        <a href="/historyPage" class="dropdown-item">연혁</a>
+                        <a href="/schedulePage" class="dropdown-item">예배안내</a>
+                    </div>
+                </div>
                 <a href="/videoWorship" class="nav-item nav-link">영상 예배</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">게시판</a>

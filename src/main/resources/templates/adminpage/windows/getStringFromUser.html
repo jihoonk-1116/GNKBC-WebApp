@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Window</title>
+</head>
+<body>
+<h1>I wanna get input</h1>
+<form action="/admin/changestaticstring" th:action method="post">
+    <div>
+        <label for="tag" th:text="${tag}" >tag</label>
+        <input type="text" name="tag" id="tag" class="form-control" th:value="${tag}" readonly>
+    </div>
+    <div>
+        <label for="content" th:text="${content}"></label>
+        <input type="text" name="content" id="content" class="form-control" placeholder="내용을 입력하세요">
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">저장</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="window.close()"
+                    type="button">취소</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
