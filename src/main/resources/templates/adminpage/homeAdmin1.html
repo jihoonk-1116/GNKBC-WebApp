@@ -5,7 +5,7 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="pragma" content="no-cache">
-    <title>관리자 페이지</title>
+    <title>관리자 페이지2</title>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,11 +36,8 @@
         </ul>
         <input type="submit"/>
     </form>
-
     <div>
-
-        <img th:each="path : ${imgPaths}" th:src="|/admin/images/${path}|" width="300" height="300"/>
-<!--        <img th:src="|/img/${imgPath.getStoreFileName()}|" width="300" height="300"/>-->
+        <img th:each="path : ${imgPaths}" th:src="|/img/${path}|" width="300" height="300"/>
     </div>
 
     <h2>Map</h2>
