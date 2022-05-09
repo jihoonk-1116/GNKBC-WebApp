@@ -1,6 +1,7 @@
 package com.GNKBC.GNKBC.controller;
 
 
+import com.GNKBC.GNKBC.repository.ImageRepository;
 import com.GNKBC.GNKBC.service.BasicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,14 @@ public class BasicPageController {
 
     @Autowired
     BasicService basicService;
+    @Autowired
+    ImageRepository imageRepository;
 
     @GetMapping
     public String home(Model model){
 
         model = basicService.loadStaticString(model);
+        model.addAttribute("imgPathMap", imageRepository.getPathMap());
 
         return "/basicpage/index";
     }

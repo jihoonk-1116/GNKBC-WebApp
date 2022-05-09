@@ -12,15 +12,12 @@ import javax.annotation.PreDestroy;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 @Slf4j
 @Repository
 @Qualifier("StaticAssetsRepository")
-public class StaticAssetsRepository {
+public class StringRepository {
 
     private static final HashMap<String, StaticString> staticStringStore = new HashMap<>();
 

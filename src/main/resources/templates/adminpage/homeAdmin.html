@@ -29,8 +29,26 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Image</h2>
-    <form action="/admin/uploadimage" method="post" enctype="multipart/form-data">
+    <h2>Carousel Image</h2>
+    <form action="/admin/uploadimage/carousel" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="carousel" >tag - carousel</label>
+            <input type="text" name="carousel" id="carousel" class="form-control" value="carousel" readonly>
+        </div>
+        <ul>
+            <li>이미지 파일들<input type="file" multiple="multiple" name="imageFiles" ></li>
+        </ul>
+        <input type="submit"/>
+    </form>
+    <div>
+        <img th:each="path : ${imgPathMap['carousel']}" th:src="|/admin/images/${path}|" width="300" height="300"/>
+    </div>
+    <h2>Activity Images</h2>
+    <form action="/admin/uploadimage/activities" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="activities" >tag - activities</label>
+            <input type="text" name="activities" id="activities" class="form-control" value="activities" readonly>
+        </div>
         <ul>
             <li>이미지 파일들<input type="file" multiple="multiple" name="imageFiles" ></li>
         </ul>
@@ -38,9 +56,7 @@
     </form>
 
     <div>
-
-        <img th:each="path : ${imgPaths}" th:src="|/admin/images/${path}|" width="300" height="300"/>
-<!--        <img th:src="|/img/${imgPath.getStoreFileName()}|" width="300" height="300"/>-->
+        <img th:each="path : ${imgPathMap['activities']}" th:src="|/admin/images/${path}|" width="300" height="300"/>
     </div>
 
     <h2>Map</h2>
