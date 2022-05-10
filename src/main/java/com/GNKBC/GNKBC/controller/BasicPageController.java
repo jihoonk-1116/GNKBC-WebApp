@@ -29,6 +29,8 @@ public class BasicPageController {
         return "/basicpage/index";
     }
 
+
+
     @GetMapping("/intro")
     public String intro(Model model){
 

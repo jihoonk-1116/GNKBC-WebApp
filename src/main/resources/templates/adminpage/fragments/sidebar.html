@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<body>
+<div th:fragment="sidebar" class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+    <div class="nano">
+        <div class="nano-content">
+            <ul>
+                <div class="logo"><a href="/admin/">
+                    <!-- <img src="/adminassets/images/logo.png" alt="" /> --><span>GNKBC ADMIN</span></a></div>
+                <li><a href="/"><i class="ti-home"></i><span>사이트 홈</span></a></li>
+                <li class="label">Web Page</li>
+                <li><a class="sidebar-sub-toggle"> 홈 </a>
+                    <!--                    <span class="badge badge-primary">2</span> -->
+                    <!--                    <span class="sidebar-collapse-icon ti-angle-down"></span></a>-->
+                    <!--                    <ul>-->
+                    <!--                        <li><a href="index.html">Dashboard 1</a></li>-->
+                    <!--                        <li><a href="index1.html">Dashboard 2</a></li>-->
+                    <!--                    </ul>-->
+                </li>
+                <li><a class="sidebar-sub-toggle"> 교회소개
+                    <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="#">담임목사 인사말</a></li>
+                        <li><a href="#">오시는 길</a></li>
+                        <li><a href="#">연혁</a></li>
+                        <li><a href="#">예배안내</a></li>
+                    </ul>
+                </li>
+                <li><a class="sidebar-sub-toggle"> 영상 예배</a>
+                </li>
+                <li><a class="sidebar-sub-toggle"> 게시판
+
+                    <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">교회 소식</a></li>
+                        <li><a href="#">교회 활동</a></li>
+                    </ul>
+                </li>
+                <li><a class="sidebar-sub-toggle"> CONTACT</a>
+                </li>
+                <li>
+                    <form th:action="@{/admin/logout}" method="post">
+                        <button class="w-100 btn btn-dark btn-lg"
+                                onclick="location.href='../basicpage/index.html'" type="submit"> 로그아웃
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /# sidebar -->
+
+</body>
+</html>

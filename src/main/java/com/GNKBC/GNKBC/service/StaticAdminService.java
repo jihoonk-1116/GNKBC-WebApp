@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,12 @@ public class StaticAdminService implements AdminService{
     private final ImageRepository imageRepository;
     @Autowired
     private final FileStore fileStore;
+
+    @Value("${admin.id}")
+    private String id;
+    @Value("${admin.pw}")
+    private String pw;
+
 
     @Override
     public void stringDataUpdate(String key, String userInput) {
@@ -71,5 +78,11 @@ public class StaticAdminService implements AdminService{
         model.addAttribute("stringMap", stringRepository.getContentMap());
         model.addAttribute("imgPathMap",imageRepository.getPathMap());
         return model;
+    }
+
+    @Override
+    public Boolean adminLogin(String id, String pw) {
+        if(this.id.equals(id) && this.pw.equals(pw)) return true;
+        return false;
     }
 }
