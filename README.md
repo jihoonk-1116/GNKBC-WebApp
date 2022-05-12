@@ -3,6 +3,8 @@
   
   * Static Web page, Admin service, Bulletin service in Java Spring <br>
   * User auth, contact us in AWS Lambda 
+  * CI&CD
+  * Deployment on AWS
   
 # Requirements 
   - Cost efficient
@@ -21,6 +23,7 @@
    * Java Spring framework
    * JPA
    * RDB
+   * JSON
   ## Tools 
    * Lombok
    * Postman 
@@ -28,6 +31,7 @@
    * Junit
    * Gson
    * Gradle
+   * Lambda
    
 
 # Step 1: Static web page 
