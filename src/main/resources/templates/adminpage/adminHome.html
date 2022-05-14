@@ -11,10 +11,91 @@
 </head>
 <body>
 <div th:replace="~{adminpage/fragments/sidebar :: sidebar}"></div>
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <h2 class="text-primary">메인 사진</h2>
+            <form action="/admin/uploadimage/carousel" method="post" enctype="multipart/form-data">
+                <div>
+                    <input type="text" name="carousel" id="carousel" class="form-control" value="carousel" readonly hidden>
+                </div>
+                <ul>
+                    <li><h6 class="h6">사진 올리기</h6></li>
+                    <li class="btn btn-primary"><input type="file" multiple="multiple" name="imageFiles" > <input type="submit"/></li>
+                </ul>
+            </form>
+            <div class="owl-carousel header-carousel position-relative">
+                <div th:each="path : ${imgPathMap['carousel']}"  class="owl-carousel-item position-relative">
+                    <img class="img-fluid" th:src="|/admin/images/${path}|" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <div>
+                <h2 class="text-primary">교회 활동 사진 & 설명</h2>
+                <form action="/admin/uploadimage/activities" method="post" enctype="multipart/form-data">
+                    <div>
+                        <input type="text" name="activities" id="activities" class="form-control" value="activities" readonly hidden>
+                    </div>
+                    <ul>
+                        <li><h6 class="h6">사진 올리기</h6></li>
+                        <li class="btn btn-primary"><input type="file" multiple="multiple" name="imageFiles" ><input type="submit"/></li>
+                    </ul>
+                </form>
+                <div class="container-xxl py-5">
+                    <div class="container">
+                        <div class="section-title text-center">
+                            <h1 class="display-5 mb-5" th:text="${stringMap['activity-title'].content}">교회 활동</h1>
+                        </div>
+                        <div class="row g-4">
+                            <div th:each="path: ${imgPathMap['activities']}" class="col-md-6 col-lg-4">
+                                <div class="service-item">
+                                    <div class="overflow-hidden">
+                                        <img class="img-fluid" th:src="|/admin/images/${path}|" alt="">
+                                    </div>
+                                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                                        <h4 class="mb-3" th:text="${stringMap['act1-title'].content}">활동1</h4>
+                                        <p th:text="${stringMap['act1-desc'].content}">내용</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-wrap">
+    <div class="main">
+        <h2>Map</h2>
+        <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
+            <div class="container contact px-lg-0">
+                <tr th:each="entry : ${stringMap}">
+                    <script>
+                    function getInputWindow(key) { window.open("/admin/getwindow/" + key, "popup", "width=300, height=300"); }
+                </script>
+                    <td th:text="${entry.key}">tag</td>
+                    <td th:text="|${entry.value.content}|">content</td>
+                    <button type="button" class="btn btn-secondary btn-sm w-100"
+                            th:attr = "onclick=|getInputWindow('${entry.key}')|">수정하기</button>
+            </div>
+            </tr>
+        </div>
+    </div>
+    </div>
+</div>
 
 
 </body>
-
 <div th:replace="~{adminpage/fragments/libraries :: js-assets}"></div>
 
 

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
@@ -28,16 +30,22 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdminController {
 
+    @Value("${admin.id}")
+    private String adminId;
+
     @Autowired @Qualifier("StaticAdminService")
     private final AdminService adminService;
 
     @GetMapping("")
-    public String login(HttpServletRequest req){
+    public String loginPage(HttpServletRequest req, Model model){
+
         HttpSession session = req.getSession(false);
 
-        if(session != null && session.getAttribute("GNKBCadmin") != null){
-            if(session.getAttribute("GNKBCadmin").equals("gnkbcAdmin")){
-                return "/adminpage/adminHome";
+        if(session != null && session.getAttribute(adminId) != null){
+            if(session.getAttribute(adminId).equals(adminId)){
+                log.info("authentication - redirect");
+                log.info(session.getAttribute(adminId).toString());
+                return "redirect:/admin/home";
             }
         }
 
@@ -51,11 +59,12 @@ public class AdminController {
 
         if(adminService.adminLogin(id,pw) == false){
             model.addAttribute("loginFail", "아이디와 비밀번호를 확인해주세요.");
+            log.info("login Fail");
             return "/adminpage/loginPage";
         }
 
         HttpSession session = req.getSession();
-        session.setAttribute("GNKBCadmin", id);
+        session.setAttribute(adminId, id);
 
 //        log.info(session.toString());
 
@@ -73,6 +82,7 @@ public class AdminController {
     public String updateForm(Model model){
 
         model = adminService.loadStaticData(model);
+
         return "/adminpage/adminHome";
     }
 
@@ -84,9 +94,14 @@ public class AdminController {
 
 
     @PostMapping("/uploadimage/{tag}")
-    public String uploadImage(@PathVariable String tag, @RequestParam("imageFiles") List<MultipartFile> imgFiles, RedirectAttributes redirectAttributes, Model model) throws IOException {
+    public String uploadImage(@PathVariable String tag, @RequestParam("imageFiles") List<MultipartFile> imgFiles, HttpServletRequest req, Model model) throws IOException {
+
+        HttpSession session = req.getSession();
+        log.info(session.getAttribute(adminId).toString());
+
 
         model = adminService.uploadImages(tag, imgFiles, model);
+
 
         return "redirect:/admin/home";
     }

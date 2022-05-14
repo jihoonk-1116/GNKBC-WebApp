@@ -22,14 +22,23 @@ public class AuthInterceptor implements HandlerInterceptor {
 
         log.info("Admin Auth Request {}", requestURI);
 
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
 
-        if(session == null || session.getAttribute(adminId) == null){
-            log.info("Unauthorized User request");
-            response.sendRedirect("/admin");
-            return false;
+        if(session != null && session.getAttribute(adminId) != null){
+            if(session.getAttribute(adminId).equals(adminId)){
+                log.info("authentication success - redirect");
+                return true;
+            }
         }
-        return true;
+        response.sendRedirect("/admin");
+        return false;
+
+//        if(session == null || session.getAttribute(adminId) == null){
+//            log.info("Unauthorized User request");
+//            response.sendRedirect("/admin");
+//            return false;
+//        }
+//        return true;
     }
 
     @Override
