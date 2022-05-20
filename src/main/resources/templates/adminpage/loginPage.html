@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -29,29 +29,17 @@
 </head>
 
 <body class="bg-secondary">
-
 <div class="unix-login">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="login-content">
                     <div class="login-logo">
-                        <a href="index.html"><span>GNKBC</span></a>
+                        <a href="/"><span>GNKBC HOME</span></a>
                     </div>
                     <div class="login-form">
-                        <h4>ADMIN LOGIN</h4>
-                        <form action="/admin" method="post">
-                            <div class="form-group">
-                                <label>ID</label>
-                                <input type="text" name="id" id="id" class="form-control" placeholder="Admin ID">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Admin Password">
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
-                        </form>
+                        <h4>관리자 로그인</h4>
+                        <a href="/oauth2/authorization/google" class="btn btn-primary">AUTH VIA GOOGLE</a>
                     </div>
                 </div>
             </div>

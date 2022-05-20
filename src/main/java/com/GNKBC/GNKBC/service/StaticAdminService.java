@@ -2,8 +2,10 @@ package com.GNKBC.GNKBC.service;
 
 import com.GNKBC.GNKBC.domain.StaticImage;
 import com.GNKBC.GNKBC.domain.StaticString;
+import com.GNKBC.GNKBC.domain.User;
 import com.GNKBC.GNKBC.repository.ImageRepository;
 import com.GNKBC.GNKBC.repository.StringRepository;
+import com.GNKBC.GNKBC.repository.UserRepository;
 import com.GNKBC.GNKBC.utils.FileStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +34,8 @@ public class StaticAdminService implements AdminService{
     private final StringRepository stringRepository;
     @Autowired
     private final ImageRepository imageRepository;
+    @Autowired
+    private final UserRepository userRepository;
     @Autowired
     private final FileStore fileStore;
 
@@ -79,10 +83,24 @@ public class StaticAdminService implements AdminService{
         model.addAttribute("imgPathMap",imageRepository.getPathMap());
         return model;
     }
-
     @Override
-    public Boolean adminLogin(String id, String pw) {
-        if(this.id.equals(id) && this.pw.equals(pw)) return true;
-        return false;
+    public boolean processOAuthPostAdminLogin(String username) {
+        log.info("adminservice == " + username);
+        if(username.equals("mynoja3@gmail.com")){
+            return true;
+        }
+        else
+            return false;
+//        User existUser = userRepository.findByEmail(username);
+//
+//        if (existUser == null) {
+//            User newUser = new User();
+//            newUser.setUsername(username);
+//            newUser.setProvider(Provider.GOOGLE);
+//            newUser.setEnabled(true);
+//
+//            repo.save(newUser);
+//        }
+
     }
 }

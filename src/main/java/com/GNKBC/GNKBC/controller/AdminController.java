@@ -36,40 +36,22 @@ public class AdminController {
     @Autowired @Qualifier("StaticAdminService")
     private final AdminService adminService;
 
-    @GetMapping("")
-    public String loginPage(HttpServletRequest req, Model model){
+    @GetMapping("/login")
+    public String loginPage(HttpServletRequest req){
 
-        HttpSession session = req.getSession(false);
+        HttpSession session = req.getSession();
 
-        if(session != null && session.getAttribute(adminId) != null){
-            if(session.getAttribute(adminId).equals(adminId)){
-                log.info("authentication - redirect");
-                log.info(session.getAttribute(adminId).toString());
-                return "redirect:/admin/home";
-            }
+        if(session.getAttribute("admin-email") != null){
+            return "redirect:/admin/home";
         }
-
         return "/adminpage/loginPage";
     }
 
-    @PostMapping("")
-    public String adminLogin(@RequestParam("id") String id, @RequestParam("password") String pw,
-                             HttpServletRequest req, Model model){
-
-
-        if(adminService.adminLogin(id,pw) == false){
-            model.addAttribute("loginFail", "아이디와 비밀번호를 확인해주세요.");
-            log.info("login Fail");
-            return "/adminpage/loginPage";
-        }
-
-        HttpSession session = req.getSession();
-        session.setAttribute(adminId, id);
-
-//        log.info(session.toString());
-
-        return "redirect:/admin/home";
+    @GetMapping("/loginfail")
+    public String loginFailPage(HttpServletRequest req){
+        return "/adminpage/loginFail";
     }
+
     @PostMapping("/logout")
     public String logout(HttpServletRequest req){
         HttpSession session = req.getSession();
@@ -79,36 +61,27 @@ public class AdminController {
         return "redirect:/";
     }
     @GetMapping("/home")
-    public String updateForm(Model model){
-
+    public String home(HttpServletRequest req, Model model){
         model = adminService.loadStaticData(model);
-
         return "/adminpage/adminHome";
     }
 
-    @GetMapping("/getimage/{tag}")
-    public String getImageWindow(@PathVariable String tag, Model model){
-        //TODO: Image file upload service
-        return "/adminpage/windows/getStringFromUser";
-    }
+//    @GetMapping("/getimage/{tag}")
+//    public String getImageWindow(@PathVariable String tag, Model model){
+//        //TODO: Image file upload service
+//        return "/adminpage/windows/getStringFromUser";
+//    }
 
 
     @PostMapping("/uploadimage/{tag}")
     public String uploadImage(@PathVariable String tag, @RequestParam("imageFiles") List<MultipartFile> imgFiles, HttpServletRequest req, Model model) throws IOException {
-
-        HttpSession session = req.getSession();
-        log.info(session.getAttribute(adminId).toString());
-
-
         model = adminService.uploadImages(tag, imgFiles, model);
-
-
         return "redirect:/admin/home";
     }
 
     @ResponseBody
     @GetMapping("/images/{filename}")
-    public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
+    public Resource getImage(@PathVariable String filename) throws MalformedURLException {
         return adminService.imageMapping(filename);
     }
 
@@ -128,9 +101,6 @@ public class AdminController {
      */
     @PostMapping("/getwindow/{tag}")
     public String changeStaticString(@RequestParam("content") String content, @RequestParam("tag") String tag, RedirectAttributes redirectAttributes){
-
-        log.info(content);
-        log.info(tag);
 
         adminService.stringDataUpdate(tag, content);
 

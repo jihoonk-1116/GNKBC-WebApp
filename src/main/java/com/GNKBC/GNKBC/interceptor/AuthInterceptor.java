@@ -18,27 +18,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String requestURI = request.getRequestURI();
 
-        log.info("Admin Auth Request {}", requestURI);
+        HttpSession session = request.getSession();
 
-        HttpSession session = request.getSession(false);
-
-        if(session != null && session.getAttribute(adminId) != null){
-            if(session.getAttribute(adminId).equals(adminId)){
-                log.info("authentication success - redirect");
-                return true;
-            }
+        if(session.getAttribute("admin-email") != null){
+            return true;
         }
-        response.sendRedirect("/admin");
+        response.sendRedirect("/admin/login");
         return false;
-
-//        if(session == null || session.getAttribute(adminId) == null){
-//            log.info("Unauthorized User request");
-//            response.sendRedirect("/admin");
-//            return false;
-//        }
-//        return true;
     }
 
     @Override

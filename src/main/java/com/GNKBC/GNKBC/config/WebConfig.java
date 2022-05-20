@@ -1,4 +1,4 @@
-package com.GNKBC.GNKBC;
+package com.GNKBC.GNKBC.config;
 
 import com.GNKBC.GNKBC.interceptor.AuthInterceptor;
 import com.GNKBC.GNKBC.interceptor.LogInterceptor;
@@ -7,7 +7,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer{
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LogInterceptor())
@@ -15,9 +16,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/admin/*/css/**","/basicassets/**","/adminassets/**", "/*.ico","/error");
 
-//        registry.addInterceptor(new AuthInterceptor())
-//                .order(2)
-//                .addPathPatterns("/admin/**")
-//                .excludePathPatterns("/admin/login","/admin","/admin/logout");
-    }
+        registry.addInterceptor(new AuthInterceptor())
+                .order(2)
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/login","/admin","/admin/logout","/admin/loginfail");
+   }
+
 }
