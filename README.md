@@ -2,9 +2,9 @@
   Full-Stack development for launching Grace New York Church's Offical Web application.
   
   * Static Web page, Admin service, Bulletin service in Java Spring <br>
-  * User auth, contact us in AWS Lambda 
-  * CI&CD
-  * Deployment on AWS
+  * Google Authentication
+  * contact us using AWS Lambda 
+  * CI&CD Deployment on AWS
   
 # Requirements 
   - Cost efficient
@@ -12,6 +12,7 @@
   - Responsive Web App
   - User Management
   - Design Java class following MVC (Model,View,Controller) pattern and OOP rules
+  - RDB with JPA, Spring Data
   
 
 # Stack
@@ -55,5 +56,18 @@
   ## Static String Data Management
     - 
   ## Static Image File Management
+# Step 3: Authentication via Google and Configuration Spring security
+
+# Step 4: Integration post writer with a rich text editor on frontend & jQuery AJAX
+
+# Step 5: Design Relational Data Base UML
+
+# Step 6: Implementation data & entity class using Spring Data and testing with H2 
+
+# Step 6: Member and Post CRUD operation using JPA
   
-# Step 3: CRUD Bulletins 
+# Step 7: Development Contact us page using AWS Lambda
+
+# Step 8: Build Docker image and configure CI&CD environment
+
+# Step 9: Integration with AWS and Deployment
