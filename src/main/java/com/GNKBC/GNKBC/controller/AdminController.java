@@ -1,6 +1,7 @@
 package com.GNKBC.GNKBC.controller;
 
 
+import com.GNKBC.GNKBC.domain.Post;
 import com.GNKBC.GNKBC.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -71,7 +72,20 @@ public class AdminController {
 //        //TODO: Image file upload service
 //        return "/adminpage/windows/getStringFromUser";
 //    }
+    public String c ="";
+    @GetMapping("/postwriter")
+    public String postWriter(Model model){
+        model.addAttribute("content", c);
+        return "/adminpage/addPost";
+    }
 
+    @PostMapping("/postwriter")
+    public String uploadPost(@RequestBody Post content, RedirectAttributes redirectAttributes){
+        c = content.getContent();
+        log.info(content.getAuthor());
+        log.info(content.getTitle());
+        return "redirect:/admin/postwriter";
+    }
 
     @PostMapping("/uploadimage/{tag}")
     public String uploadImage(@PathVariable String tag, @RequestParam("imageFiles") List<MultipartFile> imgFiles, HttpServletRequest req, Model model) throws IOException {

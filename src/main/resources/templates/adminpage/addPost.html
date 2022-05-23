@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 글쓰기</title>
+    <!-- Include Quill stylesheet -->
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
+
+    <!-- Main Quill library -->
+<!--    <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>-->
+<!--    <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>-->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
+    <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet" />
+
+    <!-- Core build with no theme, formatting, non-essential modules -->
+    <link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet" />
+    <script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>
+
+</head>
+<style>
+    body > #standalone-container {
+      margin: 50px auto;
+      max-width: 720px;
+    }
+    #editor-container {
+      height: 350px;
+    }
+  </style>
+<body>
+    <!-- Create the toolbar container -->
+<div class="content-wrap">
+    <div class="main">
+        <!-- Create the toolbar container -->
+        <div>
+            <input id="author" placeholder="작성자 이름">
+            <input id="title" placeholder="제목">
+        </div>
+<!--        <div id="toolbar">-->
+<!--            <button class="ql-bold">Bold</button>-->
+<!--            <button class="ql-italic">Italic</button>-->
+<!--            <span class="ql-formats">-->
+<!--                <select class="ql-font"></select>-->
+<!--                <select class="ql-size"></select>-->
+<!--                <select class="ql-color"></select>-->
+<!--                <select class="ql-background"></select>-->
+<!--            </span>-->
+<!--            <span class="ql-formats">-->
+<!--                <button class="ql-list" value="ordered"></button>-->
+<!--                <button class="ql-list" value="bullet"></button>-->
+<!--            </span>-->
+<!--            <span class="ql-formats">-->
+<!--                <select class="ql-align"></select>-->
+<!--            </span>-->
+<!--            <button class="ql-blockquote"></button>-->
+<!--            <button class="ql-link">Link</button>-->
+<!--            <button class="ql-underline">Underline</button>-->
+<!--            <button class="ql-header" value="1">H1</button>-->
+<!--            <button class="ql-header" value="2">H2</button>-->
+<!--            <button class="ql-image" value="1"></button>-->
+<!--        </div>-->
+        <!-- Create the editor container -->
+        <div id="editor">
+            <p>Hello World!</p>
+        </div>
+
+        <button class="w-100 btn btn-secondary btn-lg"
+                onclick="getT()"
+                type="button">get</button>
+    </div>
+</div>
+
+    <p>
+    <div th:utext="${content}"></div>
+    </p>
+    <!-- Include the Quill library -->
+<!-- Initialize Quill editor -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="/quill-image-resize-module-master/image-resize.min.js"></script>
+    <script src="/quill-image-drop-module-master/image-drop.min.js"></script>
+    <script>
+
+ var quill = new Quill('#editor', {
+        theme: 'snow',
+         modules: {
+            imageDrop: true,
+            imageResize: {
+              displaySize: true // default false
+            },
+           toolbar: [
+             [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+             ['bold', 'italic', 'underline', 'strike'],
+             [{ 'color': [] }, { 'background': [] }],
+             [{ 'align': [] }],
+             ['image'],
+
+           ]
+        }
+    });
+
+  function getT(){
+    var text = document.querySelectorAll(".ql-editor>*");
+    let content = "";
+    for (let i = 0; i < text.length; i++) {
+        content += text[i].outerHTML;
+    }
+    var author = document.querySelector("#author").value;
+    var title = document.querySelector("#title").value;
+    console.log(content)
+    var obj = {"content":content, "author":author, "title":title};
+    $.ajax({
+				url : '',
+				method : 'POST',
+				contentType:'application/json;charset=utf-8',
+				dataType:'json',
+				data: JSON.stringify(obj)
+<!--				,-->
+
+<!--				error:function(error,status,msg){-->
+<!--					alert("상태코드 " + status + "에러메시지" + msg );-->
+<!--				},-->
+<!--				success:function(){-->
+<!--					console.log("success");-->
+
+<!--				}-->
+			});
+  }
+</script>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</html>
