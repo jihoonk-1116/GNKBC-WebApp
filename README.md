@@ -20,11 +20,14 @@
    * Thymeleaf - SSR with Spring framework
    * Jquery
    * Bootstrap
+   * Quiljs 
   ## Backend
    * Java Spring framework
    * JPA
    * RDB
    * JSON
+   * Spring Data
+   * Spring Security
   ## Tools 
    * Lombok
    * Postman 
@@ -32,7 +35,9 @@
    * Junit
    * Gson
    * Gradle
-   * Lambda
+   * AWS Lambda
+   * Docker
+   * H2
    
 
 # Step 1: Static web page 
