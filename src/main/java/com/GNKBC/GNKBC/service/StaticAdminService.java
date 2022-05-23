@@ -1,8 +1,8 @@
 package com.GNKBC.GNKBC.service;
 
+import com.GNKBC.GNKBC.domain.Member;
 import com.GNKBC.GNKBC.domain.StaticImage;
 import com.GNKBC.GNKBC.domain.StaticString;
-import com.GNKBC.GNKBC.domain.User;
 import com.GNKBC.GNKBC.repository.ImageRepository;
 import com.GNKBC.GNKBC.repository.StringRepository;
 import com.GNKBC.GNKBC.repository.UserRepository;
@@ -20,30 +20,21 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
 @Qualifier("StaticAdminService")
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 public class StaticAdminService implements AdminService{
 
-    @Autowired @Qualifier("StaticAssetsRepository")
+    @Autowired
     private final StringRepository stringRepository;
     @Autowired
     private final ImageRepository imageRepository;
     @Autowired
     private final UserRepository userRepository;
-    @Autowired
-    private final FileStore fileStore;
-
-    @Value("${admin.id}")
-    private String id;
-    @Value("${admin.pw}")
-    private String pw;
-
+    private FileStore fileStore = new FileStore();
 
     @Override
     public void stringDataUpdate(String key, String userInput) {
@@ -91,16 +82,12 @@ public class StaticAdminService implements AdminService{
         }
         else
             return false;
-//        User existUser = userRepository.findByEmail(username);
-//
-//        if (existUser == null) {
-//            User newUser = new User();
-//            newUser.setUsername(username);
-//            newUser.setProvider(Provider.GOOGLE);
-//            newUser.setEnabled(true);
-//
-//            repo.save(newUser);
-//        }
 
+    }
+
+    public Member addNewAdmin(String email, String name){
+        Member newAdmin = Member.createMember(name, email);
+        userRepository.save(newAdmin);
+        return newAdmin;
     }
 }

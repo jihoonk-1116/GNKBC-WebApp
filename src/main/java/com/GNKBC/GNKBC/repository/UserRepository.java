@@ -1,6 +1,6 @@
 package com.GNKBC.GNKBC.repository;
 
-import com.GNKBC.GNKBC.domain.User;
+import com.GNKBC.GNKBC.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -12,22 +12,20 @@ import java.util.HashMap;
 @Slf4j
 public class UserRepository {
 
-    private final HashMap<Long, User> store = new HashMap<>();
-//    @PersistenceContext
-//    private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-    public User save(User user){
-//        em.persist(user);
-        log.info(user.getEmail() + "   " + user.getName());
-        store.put(user.getId(), user);
-        return user;
+    public Member save(Member member){
+        em.persist(member);
+        log.info(member.getEmail() + "   " + member.getName());
+        return member;
     }
 
 //    public User findOne(Long id){
 //        return em.find(User.class, id);
 //    }
 
-    public User findByEmail(String email){
+    public Member findByEmail(String email){
         return null;
 //        return em.createQuery("select m from Member m where m.email = :name", User.class)
 //                .setParameter("email", email)

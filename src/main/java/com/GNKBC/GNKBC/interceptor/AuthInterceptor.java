@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class AuthInterceptor implements HandlerInterceptor {
 
-    @Value("${admin.id}")
-    private String adminId;
-
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

@@ -38,12 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .logoutSuccessUrl("/")
                 .and()
                 .oauth2Login()
-                    .loginPage("/admin/login")
-                        .userInfoEndpoint()
-                            .userService(customOAuth2UserService)
+                .loginPage("/admin/login")
+                    .userInfoEndpoint()
+//                    .userService(customOAuth2UserService)
                 .and()
                 .successHandler((request, response, authentication) -> {
-
 
                     CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
                     if(adminService.processOAuthPostAdminLogin(oauthUser.getEmail())){
