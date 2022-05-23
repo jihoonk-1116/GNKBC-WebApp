@@ -66,8 +66,10 @@
 # Step 4: Integration post writer with a rich text editor on frontend & jQuery AJAX
 
 # Step 5: Design Relational Data Base UML
+   * Persistence Context Flow
+   * <img width="1302" alt="Screen Shot 2022-05-23 at 2 05 17 PM" src="https://user-images.githubusercontent.com/76544061/169909971-7d2814d5-b3cb-4231-95a1-6cb3b3cd7879.png">
 
-# Step 6: Implementation data & entity class using Spring Data and testing with H2 
+# Step 6: Implementation data & entity class using JPA and connecting with H2 
 
 # Step 6: Member and Post CRUD operation using JPA
   
