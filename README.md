@@ -69,9 +69,9 @@
    * Persistence Context Flow
    * <img width="1302" alt="Screen Shot 2022-05-23 at 2 05 17 PM" src="https://user-images.githubusercontent.com/76544061/169909971-7d2814d5-b3cb-4231-95a1-6cb3b3cd7879.png">
 
-# Step 6: Implementation data & entity class using JPA and connecting with H2 
+# Step 6: Implementation data & entity class using JPA and connecting with H2 database
 
-# Step 6: Member and Post CRUD operation using JPA
+# Step 6: Member and Post CRUD operators using JPA 
   
 # Step 7: Development Contact us page using AWS Lambda
 
