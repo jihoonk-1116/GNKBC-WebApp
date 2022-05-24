@@ -1,8 +1,12 @@
 package com.GNKBC.GNKBC.controller;
 
 
+import com.GNKBC.GNKBC.domain.Member;
 import com.GNKBC.GNKBC.domain.Post;
+import com.GNKBC.GNKBC.domain.Role;
+import com.GNKBC.GNKBC.service.AdminPostService;
 import com.GNKBC.GNKBC.service.AdminService;
+import com.GNKBC.GNKBC.service.AdminUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -36,6 +41,12 @@ public class AdminController {
 
     @Autowired @Qualifier("StaticAdminService")
     private final AdminService adminService;
+
+    @Autowired
+    private final AdminPostService adminPostService;
+
+    @Autowired
+    private final AdminUserService adminUserService;
 
     @GetMapping("/login")
     public String loginPage(HttpServletRequest req){
@@ -67,24 +78,50 @@ public class AdminController {
         return "/adminpage/adminHome";
     }
 
-//    @GetMapping("/getimage/{tag}")
-//    public String getImageWindow(@PathVariable String tag, Model model){
-//        //TODO: Image file upload service
-//        return "/adminpage/windows/getStringFromUser";
-//    }
-    public String c ="";
     @GetMapping("/postwriter")
     public String postWriter(Model model){
-        model.addAttribute("content", c);
         return "/adminpage/addPost";
     }
 
     @PostMapping("/postwriter")
-    public String uploadPost(@RequestBody Post content, RedirectAttributes redirectAttributes){
-        c = content.getContent();
+    public String uploadPost(@RequestBody Post content, HttpServletRequest req){
+
         log.info(content.getAuthor());
         log.info(content.getTitle());
+
+        HttpSession session = req.getSession();
+
+        Member member = adminUserService.getAdmin(session.getAttribute("admin-email").toString());
+        if(member.getRole() != Role.ADMIN){
+            log.info("Not Authorized user");
+        }
+
+        Post newPost = Post.createPost(member,content.getContent(),content.getTitle());
+        newPost.setLocalDateTime(LocalDateTime.now());
+        adminPostService.savePost(newPost);
+
         return "redirect:/admin/postwriter";
+    }
+
+    @GetMapping("/allposts")
+    public String showAllPost(Model model){
+        List<Post> posts = adminPostService.findAllPosts();
+        model.addAttribute("posts", posts);
+
+        List<Member> admins = adminUserService.getAllAdmin();
+        model.addAttribute("admins", admins);
+
+        return "/adminpage/newsandactivities";
+    }
+
+    @PostMapping("/addadmin")
+    public String addAdmin(@RequestParam("adminname") String name,
+                           @RequestParam("adminemail") String email){
+
+        Member newAdmin = Member.createMember(name, email, Role.ADMIN);
+        adminUserService.addNewAdmin(newAdmin);
+
+        return "redirect:/admin/allposts";
     }
 
     @PostMapping("/uploadimage/{tag}")

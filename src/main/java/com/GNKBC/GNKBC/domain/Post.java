@@ -2,7 +2,6 @@ package com.GNKBC.GNKBC.domain;
 
 import com.sun.istack.NotNull;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -23,7 +22,7 @@ public class Post {
     @JoinColumn(name = "member_id") //fk
     private Member member;
 
-    @NotNull
+    @Lob
     private String content;
 
     @NotNull
@@ -32,6 +31,8 @@ public class Post {
     @NotNull
     private String title;
 
+    private int count;
+    private ContentType contentType;
     private LocalDateTime localDateTime;
 
     public static Post createPost(Member member, String content, String title){

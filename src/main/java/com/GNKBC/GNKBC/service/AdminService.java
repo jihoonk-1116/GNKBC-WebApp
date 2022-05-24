@@ -15,6 +15,5 @@ public interface AdminService {
     Model uploadImages(String tag, List<MultipartFile> imageList, Model model) throws IOException;
     Resource imageMapping(String filename) throws MalformedURLException;
     Model loadStaticData(Model model);
-    boolean processOAuthPostAdminLogin(String username);
 
 }

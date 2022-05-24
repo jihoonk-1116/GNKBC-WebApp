@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Intro title</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+</head>
+<head th:replace="~{adminpage/fragments/libraries :: header}">
+</head>
+<body>
+<section>
+    <form action="/admin/addadmin" method="post">
+        <div>
+            <label for="adminname" >Name</label>
+            <input type="text" name="adminname" id="adminname" class="form-control">
+        </div>
+        <div>
+            <label for="adminemail" >Email</label>
+            <input type="text" name="adminemail" id="adminemail" class="form-control">
+        </div>
+        <input type="submit"/>
+    </form>
+    <div th:each="member:${admins}" class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <span th:text="${member.email}">name</span>
+            </div>
+            <div class="col-md-6">
+                <span th:text="${member.name}">name</span>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Start -->
+    <div th:each="post : ${posts}" class="container-fluid bg-dark overflow-hidden px-lg-0" style="margin: 6rem 0;">
+        <div class="container px-lg-0">
+
+            <div class="row g-0 mx-lg-0">
+                <div class="p-lg-5 ps-lg-0">
+                    <div class="section-title text-start">
+                        <h1 class="display-5 mb-4">Posts</h1>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <span th:text="${post.title}">title</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span th:text="${post.author}">author</span>
+                        </div>
+                        <div class="col-12">
+                            <span th:text="${post.localDateTime.toString()}">title</span>
+                        </div>
+                        <div class="col-12">
+                            <div th:utext="${post.content}">content</div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">OK</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+</section>
+</body>
+</html>

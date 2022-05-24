@@ -23,13 +23,21 @@ public class Member {
     @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @OneToMany(mappedBy = "member")
     private List<Post> posts = new ArrayList<>();
 
-    public static Member createMember(String name, String email){
+
+
+    public static Member createMember(String name, String email, Role role){
+
         Member member = new Member();
         member.setEmail(email);
         member.setName(name);
+        member.setRole(role);
         member.setPosts(new ArrayList<>());
 
         return member;

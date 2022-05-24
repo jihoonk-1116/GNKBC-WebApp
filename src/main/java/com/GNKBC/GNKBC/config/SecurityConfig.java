@@ -4,6 +4,7 @@ import com.GNKBC.GNKBC.config.auth.CustomOAuth2User;
 import com.GNKBC.GNKBC.config.auth.CustomOAuth2UserService;
 import com.GNKBC.GNKBC.domain.Role;
 import com.GNKBC.GNKBC.service.AdminService;
+import com.GNKBC.GNKBC.service.AdminUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
-    private final AdminService adminService;
+    private final AdminUserService adminService;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {

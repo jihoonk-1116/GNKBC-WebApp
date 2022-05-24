@@ -34,11 +34,10 @@ public class StringRepository {
     private void loadFromJson() throws FileNotFoundException {
 
         Gson gs = getGson();
-        Reader reader = new FileReader("staticString.json");
-
+        Reader reader = new FileReader("src/main/resources/staticString.json");
         try{
 
-            String jsonData = readFileAsString("staticString.json");
+            String jsonData = readFileAsString("src/main/resources/staticString.json");
 
             JsonArray jsonArray = (JsonArray) JsonParser.parseString(jsonData);
 
@@ -62,7 +61,7 @@ public class StringRepository {
          * use GSON
          */
         try {
-            Writer writer = new FileWriter("staticString.json");
+            Writer writer = new FileWriter("src/main/resources/staticString.json");
             Gson gs = getGson();
             gs.toJson(staticStringStore.values(), writer);
             writer.close();
