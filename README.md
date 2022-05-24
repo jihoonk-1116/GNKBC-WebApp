@@ -63,7 +63,7 @@
   ## Static Image File Management
 # Step 3: Authentication via Google and Configuration Spring security
 
-# Step 4: Integration post writer with a rich text editor on frontend & jQuery AJAX
+# Step 4: Integration post writer with a rich text editor at frontend & jQuery AJAX
 
 # Step 5: Design Relational Data Base UML
    * Persistence Context Flow
