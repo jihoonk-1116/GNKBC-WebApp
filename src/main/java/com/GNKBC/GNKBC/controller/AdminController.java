@@ -5,26 +5,21 @@ import com.GNKBC.GNKBC.domain.Member;
 import com.GNKBC.GNKBC.domain.Post;
 import com.GNKBC.GNKBC.domain.Role;
 import com.GNKBC.GNKBC.service.AdminPostService;
-import com.GNKBC.GNKBC.service.AdminService;
 import com.GNKBC.GNKBC.service.AdminUserService;
+import com.GNKBC.GNKBC.service.StaticAdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.LocalDateTime;
@@ -39,8 +34,8 @@ public class AdminController {
     @Value("${admin.id}")
     private String adminId;
 
-    @Autowired @Qualifier("StaticAdminService")
-    private final AdminService adminService;
+    @Autowired
+    private final StaticAdminService adminStaticService;
 
     @Autowired
     private final AdminPostService adminPostService;
@@ -74,7 +69,7 @@ public class AdminController {
     }
     @GetMapping("/home")
     public String home(HttpServletRequest req, Model model){
-        model = adminService.loadStaticData(model);
+        model = adminStaticService.loadStaticData(model);
         return "/adminpage/adminHome";
     }
 
@@ -92,6 +87,7 @@ public class AdminController {
         HttpSession session = req.getSession();
 
         Member member = adminUserService.getAdmin(session.getAttribute("admin-email").toString());
+
         if(member.getRole() != Role.ADMIN){
             log.info("Not Authorized user");
         }
@@ -126,20 +122,20 @@ public class AdminController {
 
     @PostMapping("/uploadimage/{tag}")
     public String uploadImage(@PathVariable String tag, @RequestParam("imageFiles") List<MultipartFile> imgFiles, HttpServletRequest req, Model model) throws IOException {
-        model = adminService.uploadImages(tag, imgFiles, model);
+        model = adminStaticService.uploadImages(tag, imgFiles, model);
         return "redirect:/admin/home";
     }
 
     @ResponseBody
     @GetMapping("/images/{filename}")
     public Resource getImage(@PathVariable String filename) throws MalformedURLException {
-        return adminService.imageMapping(filename);
+        return adminStaticService.imageMapping(filename);
     }
 
     @GetMapping("/getwindow/{tag}")
     public String getWindow(@PathVariable String tag, Model model){
         model.addAttribute("tag", tag);
-        model.addAttribute("content",adminService.getContent(tag).getContent());
+        model.addAttribute("content",adminStaticService.getContent(tag).getContent());
         return "/adminpage/windows/getStringFromUser";
     }
 
@@ -153,7 +149,7 @@ public class AdminController {
     @PostMapping("/getwindow/{tag}")
     public String changeStaticString(@RequestParam("content") String content, @RequestParam("tag") String tag, RedirectAttributes redirectAttributes){
 
-        adminService.stringDataUpdate(tag, content);
+        adminStaticService.stringDataUpdate(tag, content);
 
         return "redirect:/admin/getwindow/{tag}";
     }

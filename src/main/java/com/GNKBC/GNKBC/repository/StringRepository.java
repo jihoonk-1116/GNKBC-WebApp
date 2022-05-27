@@ -5,6 +5,9 @@ import com.GNKBC.GNKBC.domain.StaticString;
 import com.google.gson.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +22,9 @@ import java.util.HashMap;
 @Qualifier("StaticAssetsRepository")
 public class StringRepository {
 
+    @Value("${staticJson.dir}")
+    private String fileDir;
+
     private static final HashMap<String, StaticString> staticStringStore = new HashMap<>();
 
     public HashMap<String, StaticString> getContentMap(){
@@ -29,17 +35,26 @@ public class StringRepository {
         StaticString newStaticString = new StaticString(key,userInput);
         staticStringStore.put(newStaticString.getTag(), newStaticString);
     }
+    public String readAllLines(BufferedReader reader) throws IOException {
+        StringBuilder content = new StringBuilder();
+        String line;
 
+        while ((line = reader.readLine()) != null) {
+            content.append(line);
+            content.append(System.lineSeparator());
+        }
+
+        return content.toString();
+    }
     @PostConstruct
-    private void loadFromJson() throws FileNotFoundException {
-
+    private void loadFromJson() throws IOException {
+        InputStream input = new FileInputStream(fileDir);
         Gson gs = getGson();
-        Reader reader = new FileReader("src/main/resources/staticString.json");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+        String json2 = readAllLines(reader);
         try{
 
-            String jsonData = readFileAsString("src/main/resources/staticString.json");
-
-            JsonArray jsonArray = (JsonArray) JsonParser.parseString(jsonData);
+            JsonArray jsonArray = (JsonArray) JsonParser.parseString(json2);
 
             for (JsonElement jsonElement : jsonArray) {
 
@@ -61,7 +76,10 @@ public class StringRepository {
          * use GSON
          */
         try {
-            Writer writer = new FileWriter("src/main/resources/staticString.json");
+            OutputStream output = new FileOutputStream(fileDir);
+            //OutputStream output = new FileOutputStream("staticString.json");
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
+            //Writer writer = new FileWriter("src/main/resources/static/staticString.json");
             Gson gs = getGson();
             gs.toJson(staticStringStore.values(), writer);
             writer.close();

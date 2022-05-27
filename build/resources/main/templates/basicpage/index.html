@@ -6,7 +6,8 @@
     <meta content="뉴욕, 침례교회, 뉴욕 그레이스 교회, 은혜교회" name="keywords">
     <meta content="한인교회" name="description">
 </head>
-<head th:replace="~{basicpage/fragments/libraries :: header}">
+<!--<head th:replace="~{basicpage/fragments/libraries :: header}">-->
+    <head th:replace="/basicpage/fragments/libraries :: header">
 </head>
 
 <body>
@@ -18,8 +19,11 @@
 </div>
 <!-- Spinner End -->
 <!--topbar & nav-->
-<div th:replace="~{basicpage/fragments/top-nav :: topbar}"></div>
-<div th:replace="~{basicpage/fragments/top-nav :: nav}"></div>
+<!--<div th:replace="~{basicpage/fragments/top-nav :: topbar}"></div>-->
+<!--<div th:replace="~{basicpage/fragments/top-nav :: nav}"></div>-->
+
+<div th:replace="/basicpage/fragments/top-nav :: topbar"></div>
+<div th:replace="/basicpage/fragments/top-nav :: nav"></div>
 
 <!-- Carousel Start -->
 <div class="container-fluid p-0 pb-5">
@@ -99,12 +103,14 @@
 <!-- Service End -->
 
 <!-- Footer Start -->
-<div th:replace="~{basicpage/fragments/footer :: footer}"></div>
+<!--<div th:replace="~{basicpage/fragments/footer :: footer}"></div>-->
+<div th:replace="/basicpage/fragments/footer :: footer"></div>
 <!-- Footer End -->
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 </body>
-<div th:replace="~{basicpage/fragments/libraries :: js-assets}"></div>
+<!--<div th:replace="~{basicpage/fragments/libraries :: js-assets}"></div>-->
+<div th:replace="/basicpage/fragments/libraries :: js-assets"></div>
 </html>

@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GNKBC ADMIN</title>
 </head>
-<head th:replace="~{adminpage/fragments/libraries :: header}">
+<head th:replace="/adminpage/fragments/libraries :: header">
 </head>
 <body>
-<div th:replace="~{adminpage/fragments/sidebar :: sidebar}"></div>
+<div th:replace="/adminpage/fragments/sidebar :: sidebar"></div>
 <div class="content-wrap">
     <div class="main">
         <div class="container-fluid">
@@ -96,7 +96,7 @@
 
 
 </body>
-<div th:replace="~{adminpage/fragments/libraries :: js-assets}"></div>
+<div th:replace="/adminpage/fragments/libraries :: js-assets"></div>
 
 
 </html>

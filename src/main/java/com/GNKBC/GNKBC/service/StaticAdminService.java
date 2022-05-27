@@ -33,7 +33,6 @@ public class StaticAdminService implements AdminService{
     @Autowired
     private final ImageRepository imageRepository;
     @Autowired
-    private final UserRepository userRepository;
     private FileStore fileStore = new FileStore();
 
     @Override
