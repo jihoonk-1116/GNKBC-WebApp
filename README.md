@@ -39,8 +39,10 @@
    * Docker
    * H2
    * JenKins
+   * EC2
+   * Git
 
-  ## Setting up JenKins on EC2
+  ### Setting up JenKins on EC2
   
     1. Install Java 8 
         - sudo yum install java-1.8.0-openjdk
@@ -58,13 +60,23 @@
        - sudo systemctl status jenkins.service
 - ![Screen Shot 2022-05-30 at 3 35 12 PM](https://user-images.githubusercontent.com/76544061/171051370-3852a002-bf59-464c-ba62-720263cc5961.png)
   
-  ## Add Inbound Rule for Jenkins, port 8080
+  ### Add Inbound Rule for Jenkins, port 8080
      
       
      ![Screen Shot 2022-05-30 at 3 40 52 PM](https://user-images.githubusercontent.com/76544061/171051897-ea8de72c-d703-41c1-9d92-077f2e2c889e.png)
+  
+      - then, get password from :  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
+   ### Docker commends 
+      - sudo yum install docker
+      - sudo systemctl start docker
+      - sudo docker pull [id]/[repo name]
+      - sudo docker run -p 8080:8080 [id]/[name]
 
-
+   ### Continue on Jenkins 
+      * Gradle Plugin , Post build task plugin
+      * new item -> Check github project
+      * 
    
 
 # Step 1: Static web page 
