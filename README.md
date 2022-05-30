@@ -57,8 +57,12 @@
        - sudo systemctl start jenkins
        - sudo systemctl status jenkins.service
 - ![Screen Shot 2022-05-30 at 3 35 12 PM](https://user-images.githubusercontent.com/76544061/171051370-3852a002-bf59-464c-ba62-720263cc5961.png)
+  
+  ## Add Inbound Rule for Jenkins, port 8080
+     
+      
+       ![Screen Shot 2022-05-30 at 3 40 52 PM](https://user-images.githubusercontent.com/76544061/171051897-ea8de72c-d703-41c1-9d92-077f2e2c889e.png)
 
-       
 
 
    
