@@ -38,6 +38,29 @@
    * AWS Lambda
    * Docker
    * H2
+   * JenKins
+
+  ## Setting up JenKins on EC2
+  
+    1. Install Java 8 
+        - sudo yum install java-1.8.0-openjdk
+        - java -version
+        - alternatives --config java
+        
+    2. Add Jenkins directory
+        - sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo 
+        trusted package...
+        - sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+    3. Install
+        - sudo yum install jenkins 
+    4. Start 
+       - sudo systemctl start jenkins
+       - sudo systemctl status jenkins.service
+- ![Screen Shot 2022-05-30 at 3 35 12 PM](https://user-images.githubusercontent.com/76544061/171051370-3852a002-bf59-464c-ba62-720263cc5961.png)
+
+       
+
+
    
 
 # Step 1: Static web page 
