@@ -67,7 +67,7 @@
   
       - then, get password from :  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-   ### Docker commends 
+   ### Docker commands 
       - sudo yum install docker
       - sudo systemctl start docker
       - sudo docker pull [id]/[repo name]
@@ -76,7 +76,14 @@
    ### Continue on Jenkins 
       * Gradle Plugin , Post build task plugin
       * new item -> Check github project
-      * 
+      * github credential - personal access token by Git
+      * Chekc GitHub hook trigger for GITScm polling - to make a trigger by Github webhook
+      * Add building task using Execute Shell
+     <img width="356" alt="Screen Shot 2022-05-30 at 8 17 14 PM" src="https://user-images.githubusercontent.com/76544061/171070401-cc6b04b7-e668-43a2-8a8b-d7345a905733.png">
+       
+       * Git webhook - url : http://[ec2 IP]:8080/github-webhook/
+    <img width="537" alt="Screen Shot 2022-05-30 at 8 19 23 PM" src="https://user-images.githubusercontent.com/76544061/171070773-46d53587-ff06-47f2-a5f5-b5d7a6bfc6df.png">
+      
    
 
 # Step 1: Static web page 
